@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import javax.swing.JOptionPane;
+import java.sql.*;
+
 /**
  *
  * @author Isa Agiya
@@ -16,10 +18,14 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    Connection con = koneksi.bukaKoneksi();
+    Statement stm;
+    ResultSet rs;
     public Login() {
         initComponents();
         setLocationRelativeTo(this);
     }
+    
     
     
 
@@ -225,7 +231,32 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMinimizeLMouseClicked
 
     private void jBLoginLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLoginLActionPerformed
-        // TODO add your handling code here:
+      // TODO add your handling code here:
+       try {
+        stm = con.createStatement();
+        rs = stm.executeQuery("select * from dataregis where username = '" + tfUsernameL.getText() + "'");
+        if (rs.next()) {
+            
+        }
+        else if(pfPasswordL.getText().length() <= 10){
+            JOptionPane.showMessageDialog(null, "panjang password harus minimal 10 karakter", "pesan", JOptionPane.ERROR_MESSAGE);
+        }else {
+            stm.executeUpdate("insert into dataregis values ('" + tfUsernameL.getText() + "', '" + pfPasswordL.getText() + "')");
+            JOptionPane.showMessageDialog(this, "Selamat Bergabung di KasirinAje:D");
+        // Perform page transition here
+        Login lg = new Login();
+        lg.setVisible(true);
+        lg.pack();
+        lg.setLocationRelativeTo(null);
+        lg.setDefaultCloseOperation(Register.EXIT_ON_CLOSE);
+        this.dispose(); // Close the current frame
+    
+        }
+        
+        
+        } catch (Exception e){
+        JOptionPane.showMessageDialog(null, "tol");
+    }
         String username = tfUsernameL.getText();
         String password = pfPasswordL.getText();
     

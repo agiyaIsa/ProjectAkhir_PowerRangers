@@ -3,15 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyekakhir_powerrangers;
-
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /**
  *
  * @author Isa Agiya
  */
 public class Register extends javax.swing.JFrame {
-
+    Connection con = koneksi.bukaKoneksi();
+    Statement stm;
+    ResultSet rs;
     /**
      * Creates new form Register
      */
@@ -219,15 +221,17 @@ public class Register extends javax.swing.JFrame {
 
     private void jbRegistRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistRActionPerformed
         // TODO add your handling code here:
-        String username = tfUsernameR.getText();
-        String password = pfPasswordR.getText();
-    
-    if (username.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Username harus diisi!!!");
-    } else if (password.isEmpty() || password.length() < 10) {
-        JOptionPane.showMessageDialog(this, "Password harus minimal panjang 10!!!");
-    } else {
-        JOptionPane.showMessageDialog(this, "Selamat Bergabung di KasirinAje:D");
+        try {
+        stm = con.createStatement();
+        rs = stm.executeQuery("select * from dataregis where username = '" + tfUsernameR.getText() + "'");
+        if (rs.next()) {
+            JOptionPane.showMessageDialog(null, "Username sudah ada", "Pesan", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(pfPasswordR.getText().length() <= 10){
+            JOptionPane.showMessageDialog(null, "panjang password harus minimal 10 karakter", "pesan", JOptionPane.ERROR_MESSAGE);
+        }else {
+            stm.executeUpdate("insert into dataregis values ('" + tfUsernameR.getText() + "', '" + pfPasswordR.getText() + "')");
+            JOptionPane.showMessageDialog(this, "Selamat Bergabung di KasirinAje:D");
         // Perform page transition here
         Login lg = new Login();
         lg.setVisible(true);
@@ -235,7 +239,22 @@ public class Register extends javax.swing.JFrame {
         lg.setLocationRelativeTo(null);
         lg.setDefaultCloseOperation(Register.EXIT_ON_CLOSE);
         this.dispose(); // Close the current frame
+    
+        }
+        
+        
+        } catch (Exception e){
+        JOptionPane.showMessageDialog(null, "tol");
     }
+        String username = tfUsernameR.getText();
+        String password = pfPasswordR.getText();
+    
+    if (username.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Username harus diisi!!!");
+    } else if (password.isEmpty() || password.length() < 10) {
+        JOptionPane.showMessageDialog(this, "Password harus minimal panjang 10!!!");
+    } 
+        
     }//GEN-LAST:event_jbRegistRActionPerformed
 
     /**

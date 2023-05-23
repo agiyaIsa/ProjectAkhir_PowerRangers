@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Bulan Mei 2023 pada 06.14
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 8.2.4
+-- Generation Time: May 23, 2023 at 07:07 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dataregis`
+-- Table structure for table `dataregis`
 --
 
 CREATE TABLE `dataregis` (
@@ -32,44 +32,12 @@ CREATE TABLE `dataregis` (
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Struktur dari tabel `fiturfitur`
+-- Dumping data for table `dataregis`
 --
 
-CREATE TABLE `fiturfitur` (
-  `id` int(50) NOT NULL,
-  `nama_barang` varchar(50) NOT NULL,
-  `harga_barang` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `fiturfitur`
---
-
-INSERT INTO `fiturfitur` (`id`, `nama_barang`, `harga_barang`) VALUES
-(1, 'Televisi', 5500000);
-
---
--- Indexes for dumped tables
---
-
---
--- Indeks untuk tabel `fiturfitur`
---
-ALTER TABLE `fiturfitur`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT untuk tabel yang dibuang
---
-
---
--- AUTO_INCREMENT untuk tabel `fiturfitur`
---
-ALTER TABLE `fiturfitur`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+INSERT INTO `dataregis` (`username`, `password`) VALUES
+('isaganteng', 'umamdanrafli123');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

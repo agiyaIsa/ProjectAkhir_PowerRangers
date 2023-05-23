@@ -232,48 +232,36 @@ public class Login extends javax.swing.JFrame {
 
     private void jBLoginLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLoginLActionPerformed
       // TODO add your handling code here:
-       try {
-        stm = con.createStatement();
-        rs = stm.executeQuery("select * from dataregis where username = '" + tfUsernameL.getText() + "'");
-        if (rs.next()) {
-            
+     
+
+        if (!tfUsernameL.getText().isEmpty() && !pfPasswordL.getText().isEmpty()) {
+            try {
+            String query = "SELECT * FROM dataregis WHERE username = ? AND password = ?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, tfUsernameL.getText());
+            ps.setString(2, pfPasswordL.getText());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Halo, " + tfUsernameL.getText(), "Message", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+                TampilanAwal tj = new TampilanAwal();
+                tj.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Pastikan username dan password sudah benar.", "Login", JOptionPane.ERROR_MESSAGE);
+            }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }else if (tfUsernameL.getText().isEmpty() && pfPasswordL.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Isi data mu!", "Warning", JOptionPane.ERROR_MESSAGE);
+
+        }else if (tfUsernameL.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Username belum diisi", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+
+        }else if(pfPasswordL.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Password belum diisi", "Informasi", JOptionPane.INFORMATION_MESSAGE);
         }
-        else if(pfPasswordL.getText().length() <= 10){
-            JOptionPane.showMessageDialog(null, "panjang password harus minimal 10 karakter", "pesan", JOptionPane.ERROR_MESSAGE);
-        }else {
-            stm.executeUpdate("insert into dataregis values ('" + tfUsernameL.getText() + "', '" + pfPasswordL.getText() + "')");
-            JOptionPane.showMessageDialog(this, "Selamat Bergabung di KasirinAje:D");
-        // Perform page transition here
-        Login lg = new Login();
-        lg.setVisible(true);
-        lg.pack();
-        lg.setLocationRelativeTo(null);
-        lg.setDefaultCloseOperation(Register.EXIT_ON_CLOSE);
-        this.dispose(); // Close the current frame
-    
-        }
-        
-        
-        } catch (Exception e){
-        JOptionPane.showMessageDialog(null, "tol");
-    }
-        String username = tfUsernameL.getText();
-        String password = pfPasswordL.getText();
-    
-    if (username.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Username harus diisi!!!");
-    } else if (password.isEmpty() || password.length() < 10) {
-        JOptionPane.showMessageDialog(this, "Password harus minimal panjang 10!!!");
-    } else {
-        JOptionPane.showMessageDialog(this, "Selamat datang di kasirinAje:D");
-        // Perform page transition here
-        TampilanAwal ta = new TampilanAwal();
-        ta.setVisible(true);
-        ta.pack();
-        ta.setLocationRelativeTo(null);
-        ta.setDefaultCloseOperation(Register.EXIT_ON_CLOSE);
-        this.dispose(); // Close the current frame
-    }
     }//GEN-LAST:event_jBLoginLActionPerformed
 
     /**

@@ -4,6 +4,10 @@
  */
 package proyekakhir_powerrangers;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+import javax.swing.JFormattedTextField;
+import javax.swing.text.NumberFormatter;
 /**
  *
  * @author Isa Agiya
@@ -236,27 +240,27 @@ public class TampilanAwal extends javax.swing.JFrame {
         // TODO add your handling code here:
         switch(nama_barang.getSelectedIndex()){
             case 1:{
-                harga_barang.setText(String.valueOf("5500000"));
+                harga_barang.setText(String.valueOf("Rp. 5.500.000"));
             }
             break;
             case 2:{
-                harga_barang.setText(String.valueOf("10000000"));
+                harga_barang.setText(String.valueOf("Rp. 10.000.000"));
             }
             break;
             case 3:{
-                harga_barang.setText(String.valueOf("15000000"));
+                harga_barang.setText(String.valueOf("Rp. 15.000.000"));
             }
             break;
             case 4:{
-                harga_barang.setText(String.valueOf("3500000"));
+                harga_barang.setText(String.valueOf("Rp. 3.500.000"));
             }
             break;
             case 5:{
-                harga_barang.setText(String.valueOf("4550000"));
+                harga_barang.setText(String.valueOf("Rp. 4.550.000"));
             }
             break;
             case 6:{
-                harga_barang.setText(String.valueOf("6000000"));
+                harga_barang.setText(String.valueOf("Rp. 6.000.000"));
             }
             break;
         }
@@ -265,21 +269,32 @@ public class TampilanAwal extends javax.swing.JFrame {
     private void hitung_jumlah_barangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitung_jumlah_barangActionPerformed
         // TODO add your handling code here:
         Double harga, jBeli, hasil;
-               harga = Double.parseDouble(harga_barang.getText());
+               harga = parseRupiah(harga_barang.getText());
                jBeli = Double.parseDouble(jumlah_beli.getText());
                hasil = harga * jBeli;
-               jumlah_harga.setText(String.valueOf(hasil));
+               jumlah_harga.setText(formatRupiah(hasil));
     }//GEN-LAST:event_hitung_jumlah_barangActionPerformed
 
     private void hitung_jumlah_kembalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitung_jumlah_kembalianActionPerformed
         // TODO add your handling code here:
-        Double jHarga, bayar, hasil;
-               jHarga = Double.parseDouble(harga_barang.getText());
-               bayar = Double.parseDouble(jumlah_bayar.getText());
-               hasil = bayar - jHarga;
-               jumlah_kembalian.setText(String.valueOf(hasil));
+        Double jHarga, bayar, hasil, beli;
+               jHarga = parseRupiah(harga_barang.getText());
+               bayar = parseRupiah(jumlah_bayar.getText());
+               beli = parseRupiah(jumlah_beli.getText());
+               hasil = bayar - jHarga * beli;
+               jumlah_kembalian.setText(formatRupiah(hasil));
     }//GEN-LAST:event_hitung_jumlah_kembalianActionPerformed
 
+    private double parseRupiah(String value) {
+    value = value.replaceAll("[Rp.,]", ""); 
+    return Double.parseDouble(value);
+    }
+    
+    private String formatRupiah(double nilai) {
+    NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+    return formatRupiah.format(nilai);
+    }
+    
     private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
         // TODO add your handling code here:
         harga_barang.setText("");

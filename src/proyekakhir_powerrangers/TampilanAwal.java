@@ -337,6 +337,7 @@ public class TampilanAwal extends javax.swing.JFrame {
         this.dispose(); // Close the current frame
     }//GEN-LAST:event_keluarActionPerformed
 
+    
     private void jumlah_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_bayarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jumlah_bayarActionPerformed

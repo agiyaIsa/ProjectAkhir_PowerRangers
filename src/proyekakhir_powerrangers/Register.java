@@ -42,6 +42,7 @@ public class Register extends javax.swing.JFrame {
         lblToLoginR = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jCBShowPasswordR = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         lblCloseR = new javax.swing.JLabel();
         lblMinimizeR = new javax.swing.JLabel();
@@ -102,6 +103,15 @@ public class Register extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyekakhir_powerrangers/loginPng.png"))); // NOI18N
         jLabel2.setText("jLabel2");
 
+        jCBShowPasswordR.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        jCBShowPasswordR.setForeground(new java.awt.Color(0, 153, 153));
+        jCBShowPasswordR.setText("Show Password");
+        jCBShowPasswordR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBShowPasswordRActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,15 +124,6 @@ public class Register extends javax.swing.JFrame {
                 .addGap(246, 246, 246)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pfPasswordR, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(tfUsernameR, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,10 +131,22 @@ public class Register extends javax.swing.JFrame {
                         .addComponent(lblWelcome)
                         .addGap(29, 29, 29))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblToLoginR)
-                            .addComponent(jbRegistR, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbRegistR, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblToLoginR)))
                         .addGap(143, 143, 143))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pfPasswordR, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(tfUsernameR, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(jCBShowPasswordR))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +159,7 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfUsernameR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,14 +167,16 @@ public class Register extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pfPasswordR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(jCBShowPasswordR)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbRegistR)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblToLoginR)
-                .addGap(52, 52, 52))
+                .addGap(31, 31, 31))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 490, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 490, 530));
 
         jPanel2.setBackground(new java.awt.Color(102, 204, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -233,45 +248,50 @@ public class Register extends javax.swing.JFrame {
 
     private void jbRegistRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistRActionPerformed
         // TODO add your handling code here:
-        try {
-        stm = con.createStatement();
-        rs = stm.executeQuery("select * from dataregis where username = '" + tfUsernameR.getText() + "'");
-        if (rs.next()) {
-            JOptionPane.showMessageDialog(null, "Username sudah ada", "Pesan", JOptionPane.ERROR_MESSAGE);
-        }
-        else if(pfPasswordR.getText().length() <= 10){
-            JOptionPane.showMessageDialog(null, "panjang password harus minimal 10 karakter", "pesan", JOptionPane.ERROR_MESSAGE);
-        }else {
-            stm.executeUpdate("insert into dataregis values ('" + tfUsernameR.getText() + "', '" + pfPasswordR.getText() + "')");
-            JOptionPane.showMessageDialog(this, "Selamat Bergabung di KasirinAje:D");
-        // Perform page transition here
-        Login lg = new Login();
-        lg.setVisible(true);
-        lg.pack();
-        lg.setLocationRelativeTo(null);
-        lg.setDefaultCloseOperation(Register.EXIT_ON_CLOSE);
-        this.dispose(); // Close the current frame
-    
-        }
-        
-        
-        } catch (Exception e){
-        JOptionPane.showMessageDialog(null, "tol");
-    }
-        String username = tfUsernameR.getText();
-        String password = pfPasswordR.getText();
-    
+       try {
+    String username = tfUsernameR.getText();
+    String password = pfPasswordR.getText();
+
     if (username.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Username harus diisi!!!");
     } else if (password.isEmpty() || password.length() < 10) {
-        JOptionPane.showMessageDialog(this, "Password harus minimal panjang 10!!!");
-    } 
+        JOptionPane.showMessageDialog(this, "Password harus minimal panjang 10 karakter!!!");
+    } else {
+        stm = con.createStatement();
+        rs = stm.executeQuery("select * from dataregis where username = '" + username + "'");
+        if (rs.next()) {
+            JOptionPane.showMessageDialog(null, "Username sudah ada", "Pesan", JOptionPane.ERROR_MESSAGE);
+        } else {
+            stm.executeUpdate("insert into dataregis values ('" + username + "', '" + password + "')");
+            JOptionPane.showMessageDialog(this, "Selamat Bergabung di KasirinAje:D");
+
+            // Perform page transition here
+            Login lg = new Login();
+            lg.setVisible(true);
+            lg.pack();
+            lg.setLocationRelativeTo(null);
+            lg.setDefaultCloseOperation(Register.EXIT_ON_CLOSE);
+            this.dispose(); // Close the current frame
+        }
+    }
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Koneksi Gagal");
+}
         
     }//GEN-LAST:event_jbRegistRActionPerformed
 
     private void tfUsernameRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsernameRActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfUsernameRActionPerformed
+
+    private void jCBShowPasswordRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBShowPasswordRActionPerformed
+        // TODO add your handling code here:
+        if(jCBShowPasswordR.isSelected()){
+            pfPasswordR.setEchoChar((char)0);
+        }else{
+            pfPasswordR.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCBShowPasswordRActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,6 +329,7 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox jCBShowPasswordR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

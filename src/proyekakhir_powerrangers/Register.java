@@ -59,7 +59,7 @@ public class Register extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel5.setText("REGIST IN NOW!");
+        jLabel5.setText("REGISTER NOW!");
 
         jLabel6.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 153, 153));

@@ -5,20 +5,23 @@
 package proyekakhir_powerrangers;
 
 
-import javax.swing.JOptionPane;
-import java.sql.*;
+import javax.swing.JOptionPane; //Import ini digunakan untuk mengimpor kelas JOptionPane dari paket javax.swing
+import java.sql.*; //Import ini digunakan untuk mengimpor semua kelas yang ada dalam paket java.sql
 
 /**
- *
+ * Kelas Login digunakan untuk menampilkan form login.
+ * Menghubungkan ke database dan melakukan proses autentikasi pengguna.
  * @author Isa Agiya
  */
 public class Login extends javax.swing.JFrame {
     /**
-     * Creates new form Login
+     *  Membuat form login baru.
+     *  Inisialisasi koneksi ke database.
+     *  Membuat objek statement, result set.
      */
-    Connection con = koneksi.bukaKoneksi();
-    Statement stm;
-    ResultSet rs;
+    Connection con = koneksi.bukaKoneksi(); //
+    public Statement stm;
+    public ResultSet rs;
     public Login() {
         initComponents();
         setLocationRelativeTo(this);
@@ -225,7 +228,11 @@ public class Login extends javax.swing.JFrame {
 
     private void lblToRegistLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblToRegistLMouseClicked
         // TODO add your handling code here:
+        
+        // Membuat objek Register
         Register rg = new Register();
+        
+        // Menampilkan form Register
         rg.setVisible(true);
         rg.pack();
         rg.setLocationRelativeTo(null);
@@ -249,17 +256,24 @@ public class Login extends javax.swing.JFrame {
     private void jBLoginLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLoginLActionPerformed
       // TODO add your handling code here:
      
-
+         // Memeriksa apakah username dan password tidak kosong
         if (!tfUsernameL.getText().isEmpty() && !pfPasswordL.getText().isEmpty()) {
             try {
+            // Query untuk memeriksa kecocokan username dan password di database
             String query = "SELECT * FROM dataregis WHERE username = ? AND password = ?";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, tfUsernameL.getText());
             ps.setString(2, pfPasswordL.getText());
             ResultSet rs = ps.executeQuery();
+            
+            // Jika username dan password cocok
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Halo, " + tfUsernameL.getText(), "Message", JOptionPane.INFORMATION_MESSAGE);
+                
+                // Menutup halaman login
                 this.dispose();
+                
+                // Menampilkan halaman TampilanAwal
                 TampilanAwal tj = new TampilanAwal();
                 tj.setVisible(true);
                 this.dispose();
@@ -269,12 +283,16 @@ public class Login extends javax.swing.JFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
+            
+            // Jika username dan password kosong
         }else if (tfUsernameL.getText().isEmpty() && pfPasswordL.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Isi data mu!", "Warning", JOptionPane.ERROR_MESSAGE);
-
+            
+            // Jika username kosong
         }else if (tfUsernameL.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Username belum diisi", "Informasi", JOptionPane.INFORMATION_MESSAGE);
-
+                
+                // Jika password kosong
         }else if(pfPasswordL.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Password belum diisi", "Informasi", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -282,9 +300,14 @@ public class Login extends javax.swing.JFrame {
 
     private void jCBshowPasswordLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBshowPasswordLActionPerformed
         // TODO add your handling code here:
+        
+        // Jika checkbox "Show Password" diaktifkan
         if(jCBshowPasswordL.isSelected()){
+            // Mengatur karakter echo password menjadi 0 (menampilkan karakter asli)
             pfPasswordL.setEchoChar((char)0);
         }else{
+            // Jika checkbox "Show Password" tidak diaktifkan
+            // Mengatur karakter echo password menjadi '*' (menggantikan karakter asli dengan '*')
             pfPasswordL.setEchoChar('*');
         }
     }//GEN-LAST:event_jCBshowPasswordLActionPerformed
@@ -318,6 +341,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                // Membuat instance objek Login dan menampilkannya
                 new Login().setVisible(true);
             }
         });

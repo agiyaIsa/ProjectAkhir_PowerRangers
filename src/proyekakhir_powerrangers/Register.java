@@ -3,23 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyekakhir_powerrangers;
-import javax.swing.JOptionPane;
-import java.sql.*;
+import javax.swing.JOptionPane; //Import ini digunakan untuk mengimpor kelas JOptionPane dari paket javax.swing
+import java.sql.*; //Import ini digunakan untuk mengimpor semua kelas yang ada dalam paket java.sql
 
 /**
  *
  * @author Isa Agiya
  */
 public class Register extends javax.swing.JFrame {
-    Connection con = koneksi.bukaKoneksi();
-    Statement stm;
-    ResultSet rs;
+    public Connection con = koneksi.bukaKoneksi(); // Ini mendeklarasikan variabel con sebagai objek Connection. 
+    public Statement stm; //  Ini mendeklarasikan variabel stm sebagai objek Statement
+    public ResultSet rs;  // Ini mendeklarasikan variabel rs sebagai objek ResultSet
     /**
      * Creates new form Register
      */
-    public Register() {
-        initComponents();
-        setLocationRelativeTo(this);
+    
+    public Register() {  // Ini adalah konstruktor kelas Register yang digunakan untuk membuat objek
+        initComponents(); // dipanggil untuk menginisialisasi komponen GUI yang ada di dalam frame. 
+        setLocationRelativeTo(this); // digunakan untuk mengatur posisi frame secara relatif terhadap frame induk atau komponen yang diberikan sebagai referensi.
     }
 
     /**
@@ -248,34 +249,39 @@ public class Register extends javax.swing.JFrame {
 
     private void jbRegistRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistRActionPerformed
         // TODO add your handling code here:
-       try {
-    String username = tfUsernameR.getText();
-    String password = pfPasswordR.getText();
-
-    if (username.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Username harus diisi!!!");
+        
+       try { // Ini adalah blok try-catch yang digunakan untuk menangani pengecualian yang mungkin terjadi saat menjalankan kode di dalamnya.
+    String username = tfUsernameR.getText(); // Mendapatkan teks yang dimasukkan ke dalam tfUsernameR dan menyimpannya dalam variabel username.
+    String password = pfPasswordR.getText(); // Mendapatkan teks yang dimasukkan ke dalam pfPasswordR dan menyimpannya dalam variabel password.
+    
+    
+    if (username.isEmpty()) { // Memeriksa apakah username kosong. Jika iya, akan ditampilkan pesan dialog yang menyatakan bahwa username harus diisi.
+        JOptionPane.showMessageDialog(this, "Username harus diisi!!!");  
+        
+        // Memeriksa apakah password kosong atau memiliki panjang kurang dari 10 karakter. 
+        // Jika iya, akan ditampilkan pesan dialog yang menyatakan bahwa password harus memiliki minimal panjang 10 karakter.
     } else if (password.isEmpty() || password.length() < 10) {
         JOptionPane.showMessageDialog(this, "Password harus minimal panjang 10 karakter!!!");
     } else {
-        stm = con.createStatement();
-        rs = stm.executeQuery("select * from dataregis where username = '" + username + "'");
-        if (rs.next()) {
+        stm = con.createStatement(); // Objek Statement digunakan untuk mengirim pernyataan SQL ke database.
+        rs = stm.executeQuery("select * from dataregis where username = '" + username + "'"); // Menjalankan query SQL untuk memeriksa apakah username sudah ada dalam tabel dataregis
+        if (rs.next()) { //  Memeriksa apakah hasil query menghasilkan baris pertama. 
             JOptionPane.showMessageDialog(null, "Username sudah ada", "Pesan", JOptionPane.ERROR_MESSAGE);
         } else {
-            stm.executeUpdate("insert into dataregis values ('" + username + "', '" + password + "')");
-            JOptionPane.showMessageDialog(this, "Selamat Bergabung di KasirinAje:D");
+            stm.executeUpdate("insert into dataregis values ('" + username + "', '" + password + "')"); //  Menjalankan pernyataan SQL untuk memasukkan data 
+            JOptionPane.showMessageDialog(this, "Selamat Bergabung di KasirinAje:D"); //  Menampilkan pesan dialog yang menyatakan bahwa registrasi berhasil.
 
             // Perform page transition here
             Login lg = new Login();
-            lg.setVisible(true);
-            lg.pack();
-            lg.setLocationRelativeTo(null);
-            lg.setDefaultCloseOperation(Register.EXIT_ON_CLOSE);
+            lg.setVisible(true); // Menampilkan frame Login.
+            lg.pack(); // Mengatur ukuran frame Login sesuai dengan komponen di dalamnya.
+            lg.setLocationRelativeTo(null); // Mengatur posisi frame Login agar tampil di tengah layar.
+            lg.setDefaultCloseOperation(Register.EXIT_ON_CLOSE); // Mengatur operasi default saat frame Login ditutup.
             this.dispose(); // Close the current frame
         }
     }
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(null, "Koneksi Gagal");
+} catch (Exception e) { // Menangkap exception yang terjadi selama eksekusi blok try.
+    JOptionPane.showMessageDialog(null, "Koneksi Gagal"); // Menampilkan pesan dialog yang menyatakan bahwa koneksi gagal.
 }
         
     }//GEN-LAST:event_jbRegistRActionPerformed
@@ -286,47 +292,50 @@ public class Register extends javax.swing.JFrame {
 
     private void jCBShowPasswordRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBShowPasswordRActionPerformed
         // TODO add your handling code here:
-        if(jCBShowPasswordR.isSelected()){
-            pfPasswordR.setEchoChar((char)0);
-        }else{
-            pfPasswordR.setEchoChar('*');
+        if(jCBShowPasswordR.isSelected()){ // Memeriksa apakah jCBShowPasswordR (checkbox) dipilih.
+            pfPasswordR.setEchoChar((char)0); // Mengatur karakter echo untuk pfPasswordR (JPasswordField) menjadi 0, sehingga password terlihat saat checkbox dipilih.
+        }else{ // Jika checkbox tidak dipilih.
+            pfPasswordR.setEchoChar('*'); // Mengatur karakter echo untuk pfPasswordR (JPasswordField) kembali menjadi '*', sehingga password disembunyikan saat checkbox tidak dipilih.
         }
     }//GEN-LAST:event_jCBShowPasswordRActionPerformed
 
     /**
      * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        */public static void main(String args[]) {
+           /* Set the Nimbus look and feel */
+           //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+           /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+            * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+            */
+           try {
+               for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                   if ("Nimbus".equals(info.getName())) {
+                       javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                       break;
+                   }
+               }
+           } catch (ClassNotFoundException ex) {
+               java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           } catch (InstantiationException ex) {
+               java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           } catch (IllegalAccessException ex) {
+               java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+               java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           }
+           //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Register().setVisible(true);
-            }
-        });
-    }
+           /* Create and display the form */
+           
+           // Membuat sebuah event yang akan dijalankan dalam event dispatch thread
+           // membuat dan menampilkan objek frame Register secara visual.
+           java.awt.EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                   new Register().setVisible(true);
+               }
+           });
+       }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCBShowPasswordR;

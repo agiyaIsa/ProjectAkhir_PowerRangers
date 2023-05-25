@@ -115,7 +115,7 @@ public class TampilanAwal extends javax.swing.JFrame {
 
         delete.setBackground(new java.awt.Color(0, 153, 153));
         delete.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
-        delete.setForeground(new java.awt.Color(0, 204, 255));
+        delete.setForeground(new java.awt.Color(0, 255, 255));
         delete.setText("DELETE");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +125,7 @@ public class TampilanAwal extends javax.swing.JFrame {
 
         keluar.setBackground(new java.awt.Color(0, 153, 153));
         keluar.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
-        keluar.setForeground(new java.awt.Color(0, 204, 255));
+        keluar.setForeground(new java.awt.Color(0, 255, 255));
         keluar.setText("KELUAR");
         keluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +135,7 @@ public class TampilanAwal extends javax.swing.JFrame {
 
         hitung_jumlah_barang.setBackground(new java.awt.Color(0, 153, 153));
         hitung_jumlah_barang.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
-        hitung_jumlah_barang.setForeground(new java.awt.Color(0, 204, 255));
+        hitung_jumlah_barang.setForeground(new java.awt.Color(0, 255, 255));
         hitung_jumlah_barang.setText("HITUNG JUMLAH BARANG");
         hitung_jumlah_barang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +145,7 @@ public class TampilanAwal extends javax.swing.JFrame {
 
         hitung_jumlah_kembalian.setBackground(new java.awt.Color(0, 153, 153));
         hitung_jumlah_kembalian.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
-        hitung_jumlah_kembalian.setForeground(new java.awt.Color(0, 204, 255));
+        hitung_jumlah_kembalian.setForeground(new java.awt.Color(0, 255, 255));
         hitung_jumlah_kembalian.setText("HITUNG JUMLAH KEMBALIAN");
         hitung_jumlah_kembalian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

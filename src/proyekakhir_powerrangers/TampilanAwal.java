@@ -4,12 +4,12 @@
  */
 package proyekakhir_powerrangers;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-import javax.swing.JFormattedTextField;
-import javax.swing.text.NumberFormatter;
+import java.text.NumberFormat; //Import ini digunakan untuk mengimpor kelas NumberFormat dari paket java.text
+import java.util.Locale; //Import ini digunakan untuk mengimpor kelas Locale dari paket java.util
+import javax.swing.JFormattedTextField; //Import ini digunakan untuk mengimpor kelas JFormattedTextField dari paket javax.swing
+import javax.swing.text.NumberFormatter; //Import ini digunakan untuk mengimpor kelas NumberFormatter dari paket javax.swing.text
 /**
- *
+ *Kelas tampilan awal digunakan untuk menapilkan TampilanAwal
  * @author Isa Agiya
  */
 public class TampilanAwal extends javax.swing.JFrame {
@@ -325,7 +325,7 @@ public class TampilanAwal extends javax.swing.JFrame {
 
     private void nama_barangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nama_barangActionPerformed
         // TODO add your handling code here:
-        switch(nama_barang.getSelectedIndex()){
+        switch(nama_barang.getSelectedIndex()){ // Untuk memilih dan menetapkan harga barang berdasarkan indeks yang dipilih dari suatu komponen
             case 1:{
                 harga_barang.setText(String.valueOf("Rp. 5.500.000"));
             }
@@ -372,12 +372,12 @@ public class TampilanAwal extends javax.swing.JFrame {
                jumlah_kembalian.setText(formatRupiah(hasil));
     }//GEN-LAST:event_hitung_jumlah_kembalianActionPerformed
 
-    private double parseRupiah(String value) {
+    private double parseRupiah(String value) { //Berfungsi untuk mengubah format string harga barang menjadi nilai Double
     value = value.replaceAll("[Rp.,]", ""); 
     return Double.parseDouble(value);
     }
     
-    private String formatRupiah(double nilai) {
+    private String formatRupiah(double nilai) { //Berfungsi untuk mengubah nilai Double menjadi format string Rupiah
     NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
     return formatRupiah.format(nilai);
     }
@@ -448,6 +448,7 @@ public class TampilanAwal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                // Membuat instance objek TampilanAwal dan menampilkannya
                 new TampilanAwal().setVisible(true);
             }
         });

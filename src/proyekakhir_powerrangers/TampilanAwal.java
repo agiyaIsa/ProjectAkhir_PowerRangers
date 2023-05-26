@@ -8,6 +8,13 @@ import java.text.NumberFormat; //Import ini digunakan untuk mengimpor kelas Numb
 import java.util.Locale; //Import ini digunakan untuk mengimpor kelas Locale dari paket java.util
 import javax.swing.JFormattedTextField; //Import ini digunakan untuk mengimpor kelas JFormattedTextField dari paket javax.swing
 import javax.swing.text.NumberFormatter; //Import ini digunakan untuk mengimpor kelas NumberFormatter dari paket javax.swing.text
+import javax.swing.JDialog;
+import static proyekakhir_powerrangers.struck.lblStrukBarang;
+import static proyekakhir_powerrangers.struck.lblStrukHarga;
+import static proyekakhir_powerrangers.struck.lblStrukJb;
+import static proyekakhir_powerrangers.struck.lblStrukJh;
+import static proyekakhir_powerrangers.struck.lblStrukJumlah;
+import static proyekakhir_powerrangers.struck.lblStrukKembalian;
 /**
  *Kelas tampilan awal digunakan untuk menapilkan TampilanAwal
  * @author Isa Agiya
@@ -34,22 +41,18 @@ public class TampilanAwal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        nama_barang = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        harga_barang = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jumlah_beli = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jumlah_harga = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jumlah_bayar = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jumlah_kembalian = new javax.swing.JTextField();
         delete = new javax.swing.JButton();
         keluar = new javax.swing.JButton();
         hitung_jumlah_barang = new javax.swing.JButton();
         hitung_jumlah_kembalian = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        pnlStatusPembayaran = new javax.swing.JPanel();
+        lblStatusPembayaran = new javax.swing.JLabel();
+        btnDetalPembayaran = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lblCloseTa = new javax.swing.JLabel();
         lblMinimizeTa = new javax.swing.JLabel();
@@ -146,14 +149,44 @@ public class TampilanAwal extends javax.swing.JFrame {
         hitung_jumlah_kembalian.setBackground(new java.awt.Color(0, 153, 153));
         hitung_jumlah_kembalian.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
         hitung_jumlah_kembalian.setForeground(new java.awt.Color(0, 255, 255));
-        hitung_jumlah_kembalian.setText("HITUNG JUMLAH KEMBALIAN");
+        hitung_jumlah_kembalian.setText("BAYAR");
         hitung_jumlah_kembalian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hitung_jumlah_kembalianActionPerformed(evt);
             }
         });
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyekakhir_powerrangers/chasierbg.png"))); // NOI18N
+        pnlStatusPembayaran.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblStatusPembayaran.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblStatusPembayaran.setForeground(new java.awt.Color(0, 255, 255));
+        lblStatusPembayaran.setText("STATUS PEMBAYARAN");
+
+        javax.swing.GroupLayout pnlStatusPembayaranLayout = new javax.swing.GroupLayout(pnlStatusPembayaran);
+        pnlStatusPembayaran.setLayout(pnlStatusPembayaranLayout);
+        pnlStatusPembayaranLayout.setHorizontalGroup(
+            pnlStatusPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStatusPembayaranLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lblStatusPembayaran)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        pnlStatusPembayaranLayout.setVerticalGroup(
+            pnlStatusPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStatusPembayaranLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblStatusPembayaran, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        btnDetalPembayaran.setBackground(new java.awt.Color(0, 153, 153));
+        btnDetalPembayaran.setForeground(new java.awt.Color(0, 255, 255));
+        btnDetalPembayaran.setText("DETAIL PEMBAYARAN");
+        btnDetalPembayaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetalPembayaranActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -192,25 +225,24 @@ public class TampilanAwal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(hitung_jumlah_kembalian)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(keluar))
-                        .addGap(85, 85, 85))))
+                        .addGap(85, 85, 85))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(hitung_jumlah_kembalian)
+                        .addGap(93, 93, 93))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(hitung_jumlah_barang)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnDetalPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pnlStatusPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(15, 15, 15))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(156, 156, 156))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(hitung_jumlah_barang)
-                        .addGap(15, 15, 15))))
+                .addComponent(jLabel1)
+                .addGap(156, 156, 156))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,46 +251,48 @@ public class TampilanAwal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(harga_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(60, 60, 60)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jumlah_beli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jumlah_harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(36, 36, 36)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jumlah_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(delete)
-                                .addGap(18, 18, 18)
-                                .addComponent(keluar)
-                                .addGap(38, 38, 38)
-                                .addComponent(hitung_jumlah_barang)
-                                .addGap(30, 30, 30)
-                                .addComponent(hitung_jumlah_kembalian)))
+                        .addGap(63, 63, 63)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(harga_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jumlah_beli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jumlah_harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(delete)
+                        .addGap(18, 18, 18)
+                        .addComponent(keluar)
+                        .addGap(87, 87, 87)
+                        .addComponent(hitung_jumlah_kembalian)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hitung_jumlah_barang)))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jumlah_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jumlah_kembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
-                        .addGap(46, 46, 46))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(btnDetalPembayaran)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlStatusPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))))
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 204, 255));
@@ -365,11 +399,15 @@ public class TampilanAwal extends javax.swing.JFrame {
     private void hitung_jumlah_kembalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitung_jumlah_kembalianActionPerformed
         // TODO add your handling code here:
         Double jHarga, bayar, hasil, beli;
-               jHarga = parseRupiah(harga_barang.getText());
-               bayar = parseRupiah(jumlah_bayar.getText());
-               beli = parseRupiah(jumlah_beli.getText());
-               hasil = bayar - jHarga * beli;
-               jumlah_kembalian.setText(formatRupiah(hasil));
+    jHarga = parseRupiah(harga_barang.getText());
+    bayar = parseRupiah(jumlah_bayar.getText());
+    beli = parseRupiah(jumlah_beli.getText());
+    hasil = bayar - jHarga * beli;
+    jumlah_kembalian.setText(formatRupiah(hasil));
+    String selectedBarang = nama_barang.getSelectedItem().toString();
+    
+  
+               
     }//GEN-LAST:event_hitung_jumlah_kembalianActionPerformed
 
     private double parseRupiah(String value) { //Berfungsi untuk mengubah format string harga barang menjadi nilai Double
@@ -418,6 +456,21 @@ public class TampilanAwal extends javax.swing.JFrame {
         this.setState(1);
     }//GEN-LAST:event_lblMinimizeTaMouseClicked
 
+    private void btnDetalPembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalPembayaranActionPerformed
+        // TODO add your handling code here:
+        String selectedBarang = nama_barang.getSelectedItem().toString();
+        struck struk = new struck();
+        lblStrukBarang.setText(selectedBarang);
+        lblStrukHarga.setText(harga_barang.getText());
+        lblStrukJumlah.setText(jumlah_beli.getText());
+        lblStrukJh.setText(jumlah_harga.getText());
+        lblStrukJb.setText(jumlah_bayar.getText());
+        lblStrukKembalian.setText(jumlah_kembalian.getText());
+        struk.setVisible(true);
+        
+    
+    }//GEN-LAST:event_btnDetalPembayaranActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -455,8 +508,9 @@ public class TampilanAwal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDetalPembayaran;
     private javax.swing.JButton delete;
-    private javax.swing.JTextField harga_barang;
+    public static final javax.swing.JTextField harga_barang = new javax.swing.JTextField();
     private javax.swing.JButton hitung_jumlah_barang;
     private javax.swing.JButton hitung_jumlah_kembalian;
     private javax.swing.JLabel jLabel1;
@@ -466,16 +520,17 @@ public class TampilanAwal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jumlah_bayar;
-    private javax.swing.JTextField jumlah_beli;
-    private javax.swing.JTextField jumlah_harga;
-    private javax.swing.JTextField jumlah_kembalian;
+    public static final javax.swing.JTextField jumlah_bayar = new javax.swing.JTextField();
+    public static final javax.swing.JTextField jumlah_beli = new javax.swing.JTextField();
+    public static final javax.swing.JTextField jumlah_harga = new javax.swing.JTextField();
+    public static final javax.swing.JTextField jumlah_kembalian = new javax.swing.JTextField();
     private javax.swing.JButton keluar;
     private javax.swing.JLabel lblCloseTa;
     private javax.swing.JLabel lblMinimizeTa;
-    private javax.swing.JComboBox<String> nama_barang;
+    private javax.swing.JLabel lblStatusPembayaran;
+    public static final javax.swing.JComboBox<String> nama_barang = new javax.swing.JComboBox<>();
+    private javax.swing.JPanel pnlStatusPembayaran;
     // End of variables declaration//GEN-END:variables
 }

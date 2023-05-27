@@ -4,11 +4,13 @@
  */
 package proyekakhir_powerrangers;
 
+import java.awt.Color;
 import java.text.NumberFormat; //Import ini digunakan untuk mengimpor kelas NumberFormat dari paket java.text
 import java.util.Locale; //Import ini digunakan untuk mengimpor kelas Locale dari paket java.util
 import javax.swing.JFormattedTextField; //Import ini digunakan untuk mengimpor kelas JFormattedTextField dari paket javax.swing
 import javax.swing.text.NumberFormatter; //Import ini digunakan untuk mengimpor kelas NumberFormatter dari paket javax.swing.text
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import static proyekakhir_powerrangers.struck.lblStrukBarang;
 import static proyekakhir_powerrangers.struck.lblStrukHarga;
 import static proyekakhir_powerrangers.struck.lblStrukJb;
@@ -406,7 +408,15 @@ public class TampilanAwal extends javax.swing.JFrame {
     jumlah_kembalian.setText(formatRupiah(hasil));
     String selectedBarang = nama_barang.getSelectedItem().toString();
     
-  
+    // jika pembayaran berhasil
+        if(true)
+        {
+          JOptionPane.showMessageDialog(null, "Pembayaran berhasil", "Status Pembayaran", 1);
+          pnlStatusPembayaran.setBackground(Color.GREEN);
+          lblStatusPembayaran.setForeground(Color.WHITE);
+          lblStatusPembayaran.setText("PEMBAYARAN BERHASIL");
+          
+        }
                
     }//GEN-LAST:event_hitung_jumlah_kembalianActionPerformed
 
